@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<style>
+    h3{
+        text-align: center;
+        color: seagreen;
+
+    }
+</style>
+
+<div class='row m-3'>
+    <div class='col-md-9 mx-auto'>
+        <h3>Delivery address</h3>
+        {% for i in address %}
+        <h4>
+            {{i.fullname}}
+        </h4>
+        <p>
+            {{i.address}},{{i.city}},{{i.pincode}},{{i.state}}
+        </p>
+
+        <p>
+            {{i.mobile}}
+        </p>
+
+        {% endfor %}
+
+    </div>
+    <div class='col-md-3'>
+        <div class="shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+            <p>Total items: <b>{{items}}</b></p>
+            <p>Actual amt: <b>{{total}}.RS</b></p>
+            <p>savings: <b>{{saving}}.RS</b></p>
+            <p>Total amt: <b>{{actual}}.RS</b></p>
+            <a href="/makepayment"><button class="btn btn-success">Make Payment</button></a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock main %}

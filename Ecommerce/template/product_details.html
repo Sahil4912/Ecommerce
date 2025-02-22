@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+
+
+<div class="card mb-3" style="max-width: 740px;"id="card">
+    <div class="row g-0">
+      
+      {% for i in product %}
+        
+      
+        
+      <div class="col-md-4">
+        <img src={{i.image.url}} alt="...">
+      </div>  
+      <div class="col-md-8">
+        <div class="card-body">
+          
+          {% if error %}
+            <div class="alert alert-danger">
+              {{error}}
+            </div>  
+          {% endif %}
+            
+
+          {% if success %}
+            <div class="alert alert-success">
+              {{success}}
+            </div>  
+          {% endif %}
+
+
+          <h5 class="card-title">Product Details</h5><hr>
+          <p class="card-text"><b>Product Name: </b>{{i.pname}}</p>
+          <p class="card-text"><b>Category: </b>1</p>
+          <p class="card-text"><b>Price: </b>3000.0 &nbsp; <del>6000Rs </del>(50% off)</p>
+          <p class="card-text"><b>Color: </b>&nbsp;&nbsp; Blue &nbsp;&nbsp; white </p>
+          <p class="card-text"><b>Size: </b>&nbsp;&nbsp;7 &nbsp;&nbsp; 8 &nbsp;&nbsp; 9 &nbsp;&nbsp; 10 &nbsp;&nbsp; 11 </p>
+
+          <p class="card-text"><b>Description:</b>Branded Shoes made by Nike</p>
+
+          <a href="/addtocart/{{i.id}}"><button type="button" class="btn btn-danger" id="button">Add to Cart</button></a>
+          <a href="/cart"><button type="button" class="btn btn-danger" id="button">View Cart</button></a>
+          <a href="/"><button type="button" class="btn btn-danger" id="button">Shop More</button></a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% endblock main %}

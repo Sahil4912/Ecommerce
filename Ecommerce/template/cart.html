@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<style>
+    .h11{
+        text-align: center;
+        color: red;
+    }
+    #row1{ 
+        box-shadow: 2px 2px 2px black;
+    }
+</style>  
+<div class="row m-2">
+    <div class="row-cart" style="box-shadow: 2px 2px 2px  2px black;">
+    <h1 class="h11">{{text}}</h1>
+    {% if items == 0 %}
+    <a href="/" style="margin-left: 720px;"><button class="btn btn-success">{{text1}}</button></a>
+    {% endif %}
+</div>
+    <div class="col-md-9">
+        {% for cart in carts %}
+        <div class="row m-3" id="row1">
+            <div class="col-md-4">
+                <img src="{{cart.pid.pimage.url}}" height="300px" width="100%" class="cart-img-top" alt="....." >
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title">{{cart.pid.pname}}</h5>
+                    <h5 class="card-title"><strong>price:</strong> {{cart.pid.offer_price}}Rs.</h5>
+                    <p><label for=""><b>quantity:</b></label>
+                        <p><label for="qty">Quantity</label><a href="/updateqty/1/{{cart.id}}/">
+                            <button class="btn btn-danger">+</button></a><input type="number" value="{{cart.qty}}"><a href="/updateqty/0/{{cart.id}}/"><button class="btn btn-danger">-</button></a></p>
+                    <input type="number" value="{{cart.qty}}"></p>
+                    <p><a href="/removecart/{{cart.id}}/">
+                        <button class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                          </svg>&nbsp Remove</button></a></p>
+
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+        </div>
+    <div class="col-md-3">
+        {% if items >= 1 %}
+        <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+        <p>Total items: <b>{{items}}</b></p>
+        <p>Actual amt: <b>{{total}}.RS</b></p>
+        <p>savings: <b>{{saving}}.RS</b></p>
+        <p>Total amt: <b>{{actual}}.RS</b></p>
+        <a href="/address/"><button class="btn btn-success">Continue</button></a>
+    </div>
+{% endif %}
+</div>
+{% endblock main %}

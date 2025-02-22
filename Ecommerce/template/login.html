@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+        <div class="row mt-3">
+            <div class="col-md-4 mt 4 mx-auto p-3 mb-5 bg-light rounded" style="border: 1px solid black; box-shadow: 3px 3px 3px;" >
+                <h2>Login Here !!</h2>
+        
+          <form method="post">
+            {% if error_msg %}
+            <div class="alert alert-danger">
+              {{error_msg}}
+            </div>
+            {% endif %}
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="username" class="form-label">username</label>
+              <input type="name" class="form-control" name="uname" placeholder="Enter Email" required>
+            </div>
+            <div class="mb-3">
+              <label for="Password" class="form-label">Password</label>
+              <input type="password" class="form-control" placeholder="Enter Password." name="upass">
+            </div>
+            
+           
+            <button type="submit" class="btn btn-success">Login.</button>
+           
+          </form>
+    </div>
+</div>
+</div>
+
+<script src="static\js\bootstrap.min.js"></script>
+    
+</body>    
+</html>
+{% endblock main %}

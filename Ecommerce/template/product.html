@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<div class="row">
+    <div class="col-md-12" align="center">
+        <div class="card mb-3" style="max-width: 600px;">
+            {% for i in product %}
+            <div class="row">
+              {% if error_msg %}
+              <div class="alert alert-danger">
+                {{error_msg}}
+              </div>
+              {% endif %}
+              {% if success %}
+              <div class="alert alert-success">
+                {{success}}
+              </div>
+              {% endif %}
+            <div class="row g-0">
+              <div class="col-md-5">
+                <img src="{{i.pimage.url}}" class="img-fluid rounded-start" alt="something went wrong" id="wo">
+              </div>
+              <div class="col-md-7" align="left">
+                <div class="card-body">
+                  <h5 class="card-title">Product Detail</h5><hr>
+                  <p class="card-text"><strong>Product Name:</strong>{{i.pname}}</p>
+                  <p class="card-text"><strong>Category:</strong>{{i.category}}</p>
+                  <p class="card-text"><strong>Price:</strong>{{i.price}}</p>
+                  <p class="card-text"><strong>Description:</strong>{{i.description}}</p>
+                  <a href="/addtocart/{{i.id}}"><button type="button" class="btn btn-danger" >Add To cart</button></a>
+                  <a href="/mycart"><button type="button" class="btn btn-danger">View Cart</button></a>
+                  <a href="/"><button type="button" class="btn btn-danger">Shop more</button></a>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+    </div>
+</div>
+{% endblock main %}

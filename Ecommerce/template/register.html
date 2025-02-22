@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class="col-md-4 mt 4 mx-auto p-3 mb-5 bg-light rounded" style="border: 1px solid black; box-shadow: 3px 3px 3px;" >
+            <h2 >Register Here !!</h2>
+    
+      <form method="post">
+        {% csrf_token %}
+        {% if error_msg %}
+          <div class="alert alert-danger">
+            {{error_msg}}
+          </div>
+        {% endif %}
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="username" class="form-control" name="uname" placeholder="Enter Username" >
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="ename" placeholder="Enter Email" >
+          </div>
+        <div class="mb-3">
+          <label for="Password" class="form-label">Password</label>
+          <input type="password" class="form-control" placeholder="Enter Password." name="upass">
+        </div>
+        
+        <div class="mb-3">
+            <label for="CPassword" class="form-label"> Confirm Password</label>
+            <input type="password" class="form-control" placeholder="Re-enter Password." name="ucpass">
+          </div>
+        <button type="submit" class="btn btn-danger">Register.</button>
+        <a href="/login">Already Registered?</a>
+      </form>
+</div>
+</div>
+</div>
+
+{% endblock main %}
